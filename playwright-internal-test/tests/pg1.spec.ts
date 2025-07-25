@@ -1,0 +1,34 @@
+import { test, expect } from '@playwright/test';
+
+test('test', async ({ page }) => {
+  await page.goto('http://10.43.6.180:55209/magenta/login');
+  await page.getByRole('textbox', { name: 'User ID' }).click();
+  await page.getByRole('textbox', { name: 'User ID' }).fill('pg1');
+  await page.getByRole('textbox', { name: 'User ID' }).press('Tab');
+  await page.getByRole('textbox', { name: 'Password' }).fill('bcabca');
+  await page.getByRole('button', { name: 'LOGIN' }).click();
+  await page.locator('a').filter({ hasText: 'Pengajuan Merchant' }).nth(1).click();
+  await page.locator('a').filter({ hasText: 'Inquiry Data Merchant' }).click();
+  await page.locator('iframe').contentFrame().locator('.form-control').first().click();
+  await page.locator('iframe').contentFrame().locator('.form-control').first().fill('aa');
+  await page.locator('iframe').contentFrame().locator('.form-control.ng-untouched.ng-pristine').first().click();
+  await page.locator('iframe').contentFrame().locator('td:nth-child(3)').click();
+  await page.locator('iframe').contentFrame().locator('.form-control.ng-pristine').first().click();
+  await page.locator('iframe').contentFrame().locator('.form-control.ng-pristine').first().fill('aa');
+  await page.locator('iframe').contentFrame().locator('td:nth-child(3) > div > .input-group > .form-control').click();
+  await page.locator('iframe').contentFrame().locator('.form-control.ng-pristine').first().fill('aa');
+  await page.locator('iframe').contentFrame().locator('.form-control.ng-untouched').first().click();
+  await page.locator('iframe').contentFrame().locator('.form-control.ng-untouched').first().fill('zz');
+  await page.locator('iframe').contentFrame().locator('.form-control.ng-untouched.ng-pristine').first().click();
+  await page.locator('iframe').contentFrame().locator('.form-control.ng-untouched').first().fill('zz');
+  await page.locator('iframe').contentFrame().locator('.form-control.ng-untouched.ng-pristine').first().click();
+  await page.locator('iframe').contentFrame().locator('.form-control.ng-untouched').first().fill('z');
+  await page.locator('iframe').contentFrame().getByRole('cell', { name: 'z ', exact: true }).getByPlaceholder('Cari...').fill('zz');
+  await page.locator('a').filter({ hasText: 'Menu Tracking Pengajuan' }).click();
+  await page.locator('a').filter({ hasText: 'Tasklist Data Master' }).click();
+  await page.locator('iframe').contentFrame().getByRole('heading', { name: 'Partner' }).click();
+  await page.locator('a').filter({ hasText: 'Inquiry Data Master' }).click();
+  await page.locator('iframe').contentFrame().getByRole('heading', { name: 'MDR QRIS' }).click();
+  await page.locator('a').filter({ hasText: 'Tracking Data Master' }).click();
+  await page.locator('iframe').contentFrame().getByText('Menu untuk maintenance data MDR QRIS').click();
+});
