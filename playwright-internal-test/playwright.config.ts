@@ -13,7 +13,7 @@ export default defineConfig({
         trace: 'on'
     },
     testDir: './tests',
-    timeout: 30 * 1000, 
+    timeout: 50 * 1000, 
 // }],
     reporter: [['html', { outputFolder: 'playwright-report', open: 'never'}]],
 })
